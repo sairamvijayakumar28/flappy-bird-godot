@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://dw7udiqasgr5r"]
+
+[ext_resource type="Texture2D" uid="uid://bfm1r5x1xsls4" path="res://Flappy_Bird_assets by kosresetr55/Game Objects/pipe-green.png" id="1_dnn6u"]
+[ext_resource type="Script" uid="uid://bqgimpc8ntjde" path="res://fluffybird/pipe.gd" id="1_hqtqn"]
+[ext_resource type="AudioStream" uid="uid://3hxh8p7axhuk" path="res://Flappy_Bird_assets by kosresetr55/Sound Efects/point.wav" id="3_sgff5"]
+[ext_resource type="PackedScene" uid="uid://ded3tvj25uow0" path="res://coin.tscn" id="4_q65sp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtqn"]
+size = Vector2(49.75, 810.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sgff5"]
+size = Vector2(45, 831.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ube7"]
+radius = 58.77287
+
+[node name="Pipe" type="Node2D" unique_id=845057440]
+script = ExtResource("1_hqtqn")
+metadata/_edit_horizontal_guides_ = [-254.0]
+
+[node name="TopBody" type="StaticBody2D" parent="." unique_id=1724933844]
+
+[node name="TopPipe" type="Sprite2D" parent="TopBody" unique_id=1473180463]
+position = Vector2(114, -186.00002)
+rotation = -3.1415925
+scale = Vector2(1, 2.6823826)
+texture = ExtResource("1_dnn6u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopBody" unique_id=1170083307]
+position = Vector2(114, -167)
+shape = SubResource("RectangleShape2D_hqtqn")
+
+[node name="BottomBody" type="StaticBody2D" parent="." unique_id=256262732]
+
+[node name="BottomPipe" type="Sprite2D" parent="BottomBody" unique_id=959012794]
+position = Vector2(109, 822)
+scale = Vector2(1, 2.5375)
+texture = ExtResource("1_dnn6u")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BottomBody" unique_id=1896611004]
+position = Vector2(106, 836)
+shape = SubResource("RectangleShape2D_sgff5")
+
+[node name="scorearea" type="Area2D" parent="." unique_id=1761987963]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scorearea" unique_id=211555242]
+position = Vector2(110, 320)
+shape = SubResource("CircleShape2D_4ube7")
+
+[node name="score" type="AudioStreamPlayer2D" parent="." unique_id=287098470]
+position = Vector2(32, 113)
+stream = ExtResource("3_sgff5")
+
+[node name="Area2D" parent="." unique_id=1295341 instance=ExtResource("4_q65sp")]
+position = Vector2(64, -226)
+
+[connection signal="body_entered" from="scorearea" to="." method="_on_scorearea_body_entered"]

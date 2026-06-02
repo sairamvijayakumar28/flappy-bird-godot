@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://dhrlet8jeg3i2"]
+
+[ext_resource type="Script" uid="uid://c2bwq5gbto0bx" path="res://fluffybird/bird.gd" id="1_08wp4"]
+[ext_resource type="Texture2D" uid="uid://cgu8c8bksen6i" path="res://Flappy_Bird_assets by kosresetr55/Game Objects/yellowbird-downflap.png" id="1_odjkn"]
+[ext_resource type="Texture2D" uid="uid://d4ia7naa40o8e" path="res://Flappy_Bird_assets by kosresetr55/Game Objects/yellowbird-midflap.png" id="2_08wp4"]
+[ext_resource type="Texture2D" uid="uid://dr6qonogteb5" path="res://Flappy_Bird_assets by kosresetr55/Game Objects/yellowbird-upflap.png" id="3_i2ihe"]
+[ext_resource type="AudioStream" uid="uid://djg6gy77eawps" path="res://Flappy_Bird_assets by kosresetr55/Sound Efects/hit.ogg" id="5_dpo41"]
+[ext_resource type="AudioStream" uid="uid://b5q5ui1a2l0ft" path="res://Flappy_Bird_assets by kosresetr55/Sound Efects/wing.wav" id="6_dpo41"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dpo41"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_odjkn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_08wp4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_i2ihe")
+}],
+"loop": true,
+"name": &"flap",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_61uj8"]
+radius = 20.0
+height = 52.0
+
+[node name="bird" type="CharacterBody2D" unique_id=119560159]
+script = ExtResource("1_08wp4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=783602700]
+position = Vector2(434.25, 204)
+scale = Vector2(1.6911764, 2.666666)
+sprite_frames = SubResource("SpriteFrames_dpo41")
+animation = &"flap"
+frame_progress = 0.056150656
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=312200349]
+position = Vector2(433, 203)
+shape = SubResource("CapsuleShape2D_61uj8")
+
+[node name="hitsound" type="AudioStreamPlayer2D" parent="." unique_id=1618804874]
+process_mode = 3
+stream = ExtResource("5_dpo41")
+attenuation = 1.9318728
+
+[node name="jumpsound" type="AudioStreamPlayer2D" parent="." unique_id=633267753]
+stream = ExtResource("6_dpo41")
