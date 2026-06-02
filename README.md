@@ -2,6 +2,11 @@
 
 A fun 2D arcade game built with **Godot Engine 4**, inspired by the classic Flappy Bird. The player controls a bird that must fly through pipes while collecting coins to increase the score. The game ends when the bird collides with an obstacle or falls out of bounds.
 
+## Gameplay:
+
+https://github.com/user-attachments/assets/63901365-5aa6-4741-9f0e-f7b7547f38b7
+
+
 ## 🎮 Features
 
 - Smooth bird movement with gravity
